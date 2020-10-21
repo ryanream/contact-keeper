@@ -2,22 +2,23 @@ import React, { useReducer } from 'react';
 import AuthContext from './authContext';
 import authReducer from './authReducer';
 
-import {
-  REGISTER_SUCCESS,
-  REGISTER_FAIL,
-  USER_LOADEDED,
-  AUTH_ERROR,
-  LOGIN_SUCCESS,
-  LOGIN_FAIL,
-  LOGOUT,
-  CLEAR_ERRORS,
-} from '../types';
+// import {
+//   REGISTER_SUCCESS,
+//   REGISTER_FAIL,
+//   USER_LOADEDED,
+//   AUTH_ERROR,
+//   LOGIN_SUCCESS,
+//   LOGIN_FAIL,
+//   LOGOUT,
+//   CLEAR_ERRORS,
+// } from '../types';
 
 const AuthState = props => {
   const initialState = {
     token: localStorage.getItem('token'),
     isAuthenticated: null,
     loading: true,
+    user: null,
     error: null,
   };
 
@@ -34,22 +35,17 @@ const AuthState = props => {
   // Clear Errors
 
   return (
-    <ContactContext.Provider
+    <AuthContext.Provider
       value={{
-        contacts: state.contacts,
-        current: state.current,
-        filtered: state.filtered,
-        addContact,
-        deleteContact,
-        setCurrent,
-        clearCurrent,
-        updateContact,
-        filterContacts,
-        clearFilter,
+        token: state.token,
+        isAuthenticated: state.isAuthenticated,
+        loading: state.loading,
+        user: state.user,
+        error: state.error,
       }}
     >
       {props.children}
-    </ContactContext.Provider>
+    </AuthContext.Provider>
   );
 };
-export default ContactState;
+export default AuthState;
