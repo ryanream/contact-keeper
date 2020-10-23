@@ -42,7 +42,7 @@ router.post(
       // is email valid?
       let user = await User.findOne({ email });
       if (!user) {
-        return res.status(400).json({ msg: 'Invalid Credentials ' });
+        return res.status(400).json({ msg: 'Invalid Credentials' });
       }
 
       // is password (hash) valid? ** why are we using isMatch? Is that a normal variable for this scenario? **
