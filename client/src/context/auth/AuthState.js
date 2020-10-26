@@ -86,7 +86,6 @@ const AuthState = props => {
         type: LOGIN_SUCCESS,
         payload: res.data,
       });
-      console.log('LOGIN-SUCCESS. loadUser() should run next.');
       loadUser();
     } catch (err) {
       dispatch({
@@ -97,7 +96,7 @@ const AuthState = props => {
   };
 
   // Logout
-  const logout = () => console.log('logout');
+  const logout = () => dispatch({ type: LOGOUT });
 
   // Clear Errors
   const clearErrors = () => dispatch({ type: CLEAR_ERRORS });

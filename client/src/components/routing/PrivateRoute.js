@@ -4,12 +4,12 @@ import AuthContext from '../../context/auth/authContext';
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
   const authContext = useContext(AuthContext);
-  const { isAunthenticated, loading } = authContext;
+  const { isAuthenticated, loading } = authContext;
   return (
     <Route
       {...rest}
       render={props =>
-        !isAunthenticated && !loading ? (
+        !isAuthenticated && !loading ? (
           <Redirect to='/login' />
         ) : (
           <Component {...props} />
